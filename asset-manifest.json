@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/cv-hd/static/css/main.073c9b0a.css",
+    "main.js": "/cv-hd/static/js/main.49f0a6f3.js",
+    "static/js/787.a71561b8.chunk.js": "/cv-hd/static/js/787.a71561b8.chunk.js",
+    "static/media/cvHectorD-ES.pdf": "/cv-hd/static/media/cvHectorD-ES.f636dd289e570dd7928e.pdf",
+    "static/media/cvHectorD-EN.pdf": "/cv-hd/static/media/cvHectorD-EN.32eca1cf7b74c2c821c6.pdf",
+    "index.html": "/cv-hd/index.html",
+    "main.073c9b0a.css.map": "/cv-hd/static/css/main.073c9b0a.css.map",
+    "main.49f0a6f3.js.map": "/cv-hd/static/js/main.49f0a6f3.js.map",
+    "787.a71561b8.chunk.js.map": "/cv-hd/static/js/787.a71561b8.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.073c9b0a.css",
+    "static/js/main.49f0a6f3.js"
+  ]
+}
