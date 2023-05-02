@@ -18,7 +18,7 @@ export default function Footer() {
         py={4}
         align="center"
       >
-        <Text>© 2023 Hector Duran. All rights reserved</Text>
+        <Text>Copyright ©  Hector Duran 2023</Text>
       </Container>
     </Box>
   );

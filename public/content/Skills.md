@@ -1,5 +1,11 @@
-## HTML, CSS & JavaScript
-Development of website apps using HTML, CSS y JavaScript standards.
+## HTML, CSS
+Development of website using HTML and CSS standards.
+- Tags: Front-end
+- Badges:
+  - advanced [yellow]
+
+## JavaScript
+I use it to improve, modify and update the designs and functionalities of the websites.
 - Tags: Front-end
 - Badges:
   - intermediate [blue]
