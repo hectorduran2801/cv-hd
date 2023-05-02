@@ -16,4 +16,4 @@ As a software developer, I am a growing professional in the programming world. I
 - Phone: 69271957
 
 ## Logo
-- CV
+- HD

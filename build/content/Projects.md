@@ -14,10 +14,9 @@ Personal web site development.
 Personal application development.
 - Tags: Software
 - Badges:
-  - HTML [red]
-  - CSS [blue]
   - AngularJS [red]
   - NestJS [grey]
+  - npm [brown]
   - MongoDB [green]
 - Buttons:
   - Link [https://siesa-app.com/]
@@ -38,6 +37,7 @@ Development of two applications, a back-end application which will expose a REST
   - ReactJS [cyan]
   - .Net [purple] 
   - C# [purple]
+  - npm [brown]
   - MySQL [grey]
 - Buttons:
   - Git Page [https://hectorduran2801.github.io/reactHotel/]
@@ -49,5 +49,14 @@ Development of a software test.
 - Tags: Repositorie
 - Badges:
   - Java [teal]
+- Buttons:
+  - Link [https://github.com/hectorduran2801/test_Choucair]
+
+## CV
+Development of my curriculum.
+- Tags: Repositorie
+- Badges:
+  - ReactJS [blue]
+  - yarn [brown]
 - Buttons:
   - Link [https://github.com/hectorduran2801/test_Choucair]

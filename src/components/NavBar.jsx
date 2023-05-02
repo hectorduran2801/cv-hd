@@ -21,7 +21,7 @@ const TbIcons = require("react-icons/tb");
 
 export default function Nav({ color }) {
   const profile = ProfileArray();
-  const colors = {
+  /* const colors = {
     blue: "#3182CE",
     cyan: "#00B5D8",
     gray: "#718096",
@@ -32,7 +32,7 @@ export default function Nav({ color }) {
     red: "#E53E3E",
     teal: "#319795",
     yellow: "#D69E2E",
-  };
+  }; */
   const [scroll, setScroll] = useState(false);
   const { colorMode, toggleColorMode } = useColorMode("");
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -84,7 +84,7 @@ export default function Nav({ color }) {
   return (
     <>
       <Flex
-        bg={useColorModeValue("gray.100", "gray.900")}
+        bg={useColorModeValue("blue.100", "blue.900")}
         px={4}
         h={16}
         boxShadow={scroll ? "base" : "none"}
@@ -98,7 +98,7 @@ export default function Nav({ color }) {
         <Link onClick={scrollToHero}>
           <HStack>
             {TbLetterComponents.map((Component, index) => (
-              <Component key={index} color={colors[color]} />
+              <Component key={index} color="white"/>
             ))}
           </HStack>
         </Link>

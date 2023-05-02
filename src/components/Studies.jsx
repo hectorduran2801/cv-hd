@@ -1,51 +1,81 @@
 import {
-    Divider,
-    Stack,
-    Text,
-    Container,
-    Box,
-    HStack,
-    Card,
-    CardHeader,
-    CardBody,
-    CardFooter,
-    Flex,
-    Image,
-    List,
-    ListItem,
-    ListIcon,
-  } from "@chakra-ui/react";
-  import { ChevronRightIcon } from "@chakra-ui/icons";
-  import { Fade } from "react-reveal";
+  Divider,
+  Stack,
+  Text,
+  Container,
+  Box,
+  HStack,
+  Card,
+  CardHeader,
+  CardBody,
+  CardFooter,
+  Flex,
+  Badge,
+  Image,
+  List,
+  ListItem,
+  ListIcon,
+  Button,
+  ButtonGroup,
+  Center,
+} from "@chakra-ui/react";
+import { ChevronRightIcon } from "@chakra-ui/icons";
+import { Fade } from "react-reveal";
+import { useState, useEffect } from "react";
+import StudiesArray from "./StudiesArray";
+import TagsArray from "./TagsArray";
+
+export default function Experience({ color }) {
+  const studies = StudiesArray();
+  const options = TagsArray("StudiesTags");
+  const [selected, setSelected] = useState("");
+
+  useEffect(() => {
+    if (options.length > 0) {
+      setSelected(options[0].value);
+    }
+  }, [options]);
   
-  import StudiesArray from "./StudiesArray";
-  
-  function Studies({ color }) {
-    const studies = StudiesArray();
-  
-    return (
-      <>
-        <Container maxW={"3xl"} id="studies">
-          <Stack
-            as={Box}
-            textAlign={"center"}
-            spacing={{ base: 8, md: 14 }}
-            pb={{ base: 20, md: 36 }}
-          >
-            <Stack align="center" direction="row" px={4}>
-              <HStack mx={4}>
-                <Text color={`${color}.400`} fontWeight={800}>
-                  02
-                </Text>
-                <Text fontWeight={800}>Studies</Text>
-              </HStack>
-              <Divider orientation="horizontal" />
-            </Stack>
-  
-            <Stack px={4} spacing={4}>
-              {studies.map((stu) => (
-                <Fade key={stu.institution} bottom>
-                  <Card size="sm">
+  const handleSelected = (value) => {
+    setSelected(value);
+  };
+
+  return (
+    <>
+      <Container maxW={"3xl"} id="studies">
+        <Stack
+          as={Box}
+          textAlign={"center"}
+          spacing={{ base: 8, md: 14 }}
+          pb={{ base: 20, md: 36 }}
+        >
+          <Stack align="center" direction="row" px={4}>
+            <HStack mx={4}>
+              <Text color={`${color}.400`} fontWeight={800}>
+                02
+              </Text>
+              <Text fontWeight={800}>Studies</Text>
+            </HStack>
+            <Divider orientation="horizontal" />
+          </Stack>
+          <Center px={4}>
+            <ButtonGroup variant="outline">
+              {options.map((option) => (
+                <Button
+                  colorScheme={selected === option.value ? `${color}` : "gray"}
+                  onClick={() => handleSelected(option.value)}
+                >
+                  {option.value}
+                </Button>
+              ))}
+            </ButtonGroup>
+          </Center>
+          <Stack px={4} spacing={4}>
+            {studies
+              .filter((stu) => stu.tags.includes(selected))
+              .map((stu) => (
+                <Fade bottom>
+                  <Card key={stu.institution} size="sm">
                     <CardHeader>
                       <Flex justifyContent="space-between">
                         <HStack>
@@ -76,16 +106,24 @@ import {
                         </List>
                       </Flex>
                     </CardBody>
-                    <CardFooter></CardFooter>
+                    <CardFooter>
+                      <HStack spacing={2}>
+                        {stu.badges.map((badge) => (
+                          <Badge
+                            key={badge.name}
+                            colorScheme={badge.colorScheme}
+                          >
+                            {badge.name}
+                          </Badge>
+                        ))}
+                      </HStack>
+                    </CardFooter>
                   </Card>
                 </Fade>
               ))}
-            </Stack>
           </Stack>
-        </Container>
-      </>
-    );
-  }
-  
-  export default Studies;
-  
+        </Stack>
+      </Container>
+    </>
+  );
+}

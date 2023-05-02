@@ -10,6 +10,12 @@ Development of responsive web applications using AngularJs and ReactJs.
 - Badges:
   - basic [grey]
 
+## TypeScript
+Develop JavaScript applications.
+- Tags: Front-end
+- Badges:
+  - basic [grey]
+
 ## NodeJS
 
 - Tags: Back-end
