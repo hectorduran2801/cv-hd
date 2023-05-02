@@ -59,4 +59,4 @@ Development of my curriculum.
   - ReactJS [blue]
   - yarn [brown]
 - Buttons:
-  - Link [https://github.com/hectorduran2801/test_Choucair]
+  - Link [https://github.com/hectorduran2801/cv-hd]

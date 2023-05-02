@@ -2,7 +2,7 @@
 ## Technological University of Panama
 - *Bachelor's Degree in Software Development* | Jan'18 - May'22
 - ![logo512](../assets/logoUTP.webp)
-- Tags: University
+- Tags: Degree
 - Badges:
   - []
 - List Items:
