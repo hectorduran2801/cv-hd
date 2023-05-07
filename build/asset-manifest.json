@@ -1,18 +1,18 @@
 {
   "files": {
     "main.css": "/static/css/main.073c9b0a.css",
-    "main.js": "/static/js/main.f4f796e7.js",
+    "main.js": "/static/js/main.15d8bbf9.js",
     "static/js/787.a71561b8.chunk.js": "/static/js/787.a71561b8.chunk.js",
     "static/media/cvHectorD-ES.pdf": "/static/media/cvHectorD-ES.4acbaa0b9135e38186d2.pdf",
     "static/media/cvHectorD-EN.pdf": "/static/media/cvHectorD-EN.e081b8c9cee08b145364.pdf",
     "static/media/yo.webp": "/static/media/yo.b4c2a002aad6d7176b40.webp",
     "index.html": "/index.html",
     "main.073c9b0a.css.map": "/static/css/main.073c9b0a.css.map",
-    "main.f4f796e7.js.map": "/static/js/main.f4f796e7.js.map",
+    "main.15d8bbf9.js.map": "/static/js/main.15d8bbf9.js.map",
     "787.a71561b8.chunk.js.map": "/static/js/787.a71561b8.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.073c9b0a.css",
-    "static/js/main.f4f796e7.js"
+    "static/js/main.15d8bbf9.js"
   ]
 }
