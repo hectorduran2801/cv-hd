@@ -13,13 +13,14 @@ import {
   useDisclosure,
   HStack,
   Link,
+  Select,
 } from "@chakra-ui/react";
 import { MoonIcon, SunIcon, HamburgerIcon } from "@chakra-ui/icons";
 import { useState } from "react";
 import ProfileArray from "./ProfileArray";
 const TbIcons = require("react-icons/tb");
 
-export default function Nav({ color }) {
+function Nav({ color, language, onLanguageChange }) {
   const profile = ProfileArray();
   /* const colors = {
     blue: "#3182CE",
@@ -81,6 +82,27 @@ export default function Nav({ color }) {
     TbLetterComponents.push(component);
   }
 
+  const translations = {
+    en: {
+      about: "About",
+      studies: "Studies",
+      skills: "Skills",
+      experience: "Experience",
+      projects: "Projects",
+      contact: "Contact",
+    },
+    es: {
+      about: "Sobre mí",
+      studies: "Estudios",
+      skills: "Habilidades",
+      experience: "Experiencia",
+      projects: "Proyectos",
+      contact: "Contacto",
+    },
+  };
+
+  const selectedTranslations = translations[language];
+
   return (
     <>
       <Flex
@@ -98,7 +120,7 @@ export default function Nav({ color }) {
         <Link onClick={scrollToHero}>
           <HStack>
             {TbLetterComponents.map((Component, index) => (
-              <Component key={index} color="white"/>
+              <Component key={index} color="white" />
             ))}
           </HStack>
         </Link>
@@ -108,22 +130,22 @@ export default function Nav({ color }) {
             {isLargerThanMD ? (
               <>
                 <Button variant="ghost" onClick={scrollToAbout}>
-                  About
+                  {selectedTranslations.about}
                 </Button>
                 <Button variant="ghost" onClick={scrollToStudies}>
-                  Studies
+                  {selectedTranslations.studies}
                 </Button>
                 <Button variant="ghost" onClick={scrollToSkills}>
-                  Skills
+                  {selectedTranslations.skills}
                 </Button>
                 <Button variant="ghost" onClick={scrollToExperience}>
-                  Experience
+                  {selectedTranslations.experience}
                 </Button>
                 <Button variant="ghost" onClick={scrollToProjects}>
-                  Projects
+                  {selectedTranslations.projects}
                 </Button>
                 <Button variant="ghost" onClick={scrollToContact}>
-                  Contact
+                  {selectedTranslations.contact}
                 </Button>
               </>
             ) : (
@@ -132,6 +154,16 @@ export default function Nav({ color }) {
             <Button onClick={toggleColorMode}>
               {colorMode === "light" ? <MoonIcon /> : <SunIcon />}
             </Button>
+
+            <Select
+              value={language}
+              onChange={(event) => onLanguageChange(event.target.value)}
+              width="100px"
+              mx={2}
+            >
+              <option value="en">EN</option>
+              <option value="es">ES</option>
+            </Select>
 
             {isLargerThanMD ? (
               <></>
@@ -147,22 +179,22 @@ export default function Nav({ color }) {
                   <DrawerContent>
                     <DrawerBody>
                       <Button variant="ghost" onClick={scrollToAbout}>
-                        About
+                        {selectedTranslations.about}
                       </Button>
                       <Button variant="ghost" onClick={scrollToStudies}>
-                        Studies
+                        {selectedTranslations.studies}
                       </Button>
                       <Button variant="ghost" onClick={scrollToSkills}>
-                        Skills
+                        {selectedTranslations.skills}
                       </Button>
                       <Button variant="ghost" onClick={scrollToExperience}>
-                        Experience
+                        {selectedTranslations.experience}
                       </Button>
                       <Button variant="ghost" onClick={scrollToProjects}>
-                        Projects
+                        {selectedTranslations.projects}
                       </Button>
                       <Button variant="ghost" onClick={scrollToContact}>
-                        Contact
+                        {selectedTranslations.contact}
                       </Button>
                     </DrawerBody>
                   </DrawerContent>
@@ -175,3 +207,5 @@ export default function Nav({ color }) {
     </>
   );
 }
+
+export default Nav;

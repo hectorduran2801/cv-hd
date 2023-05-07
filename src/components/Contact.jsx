@@ -11,7 +11,7 @@ import {
 import { FaLinkedin, FaGithub, FaEnvelope, FaWhatsapp } from "react-icons/fa";
 import ProfileArray from "./ProfileArray";
 
-function Contact({ color }) {
+function Contact({ color, language, onLanguageChange }) {
   const profile = ProfileArray();
   const linkedin = () => {
     window.open(`${profile.linkedin}`, "_blank", "noreferrer,noopener");
@@ -31,6 +31,19 @@ function Contact({ color }) {
     );
   };
 
+  const translations = {
+    en: {
+      contact: "Contact",
+      message: "For more information about me.",
+    },
+    es: {
+      contact: "Contacto",
+      message: "Para mas información sobre mí.",
+    }
+  };
+
+  const selectedTranslations = translations[language];
+
   return (
     <>
       <Container maxW={"3xl"} id="contact">
@@ -45,12 +58,12 @@ function Contact({ color }) {
               <Text color={`${color}.400`} fontWeight={800}>
                 06
               </Text>
-              <Text fontWeight={800}>Contact</Text>
+              <Text fontWeight={800}>{selectedTranslations.contact}</Text>
             </HStack>
             <Divider orientation="horizontal" />
           </Stack>
           <Stack spacing={4} as={Container} maxW={"3xl"} textAlign={"center"}>
-            <Heading fontSize={"3xl"}>For more information about me.</Heading>
+            <Heading fontSize={"3xl"}>{selectedTranslations.message}</Heading>
 
             <Center>
               <HStack pt={4} spacing={4}>

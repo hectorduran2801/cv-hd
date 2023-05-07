@@ -23,8 +23,6 @@ import {
     const skills = SkillsArray();
     const options = TagsArray("SkillsTags");
   
-    console.log(skills);
-  
     const [selected, setSelected] = useState("Front-end");
   
     const handleSelected = (value) => {
