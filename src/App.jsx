@@ -26,7 +26,11 @@ function App() {
         language={language}
         onLanguageChange={handleLanguageChange}
       />
-      <Header color={color} />
+      <Header
+        color={color}
+        language={language}
+        onLanguageChange={handleLanguageChange}
+      />
       <About
         color={color}
         language={language}

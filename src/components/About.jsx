@@ -10,20 +10,25 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import ProfileArray from "./ProfileArray";
+import ProfileArrayES from "./ProfileArrayES";
 import { saveAs } from "file-saver";
 import pdfCVES from "../cv/cvHectorD-ES.pdf";
 import pdfCVEN from "../cv/cvHectorD-EN.pdf";
 import logoImage from "../../src/photo/yo.webp";
 
 function About({ color, language, onLanguageChange }) {
+  const profileES = ProfileArrayES();
+
   const profile = ProfileArray();
 
   const translations = {
     en: {
       about: "About",
+      cv: "Download CV in English",
     },
     es: {
       about: "Sobre mí",
+      cv: "Descargar CV en Español",
     },
   };
 
@@ -58,9 +63,9 @@ function About({ color, language, onLanguageChange }) {
               borderRadius="full"
               border="1px solid black"
             />
-            <Box borderRadius={{ base: "xl 0 0 xl", md: "xl" }} p={4}>
+            <Box borderRadius={{ base: "xl 0 0 xl", md: "xl" }} p={4} >
               <Text color={"white.600"} fontSize={"xl"} px={4}>
-                {profile.about}
+                {language === "es" ? profileES.about : profile.about}
               </Text>
             </Box>
           </VStack>
@@ -71,28 +76,29 @@ function About({ color, language, onLanguageChange }) {
             px={4}
           >
             <Box>
-              <Button
-                textAlign={"center"}
-                colorScheme={color}
-                size="md"
-                onClick={() => {
-                  saveAs(pdfCVES, "cvHectorD-ES.pdf");
-                }}
-              >
-                Download CV in Spanish
-              </Button>
-            </Box>
-            <Box>
-              <Button
-                textAlign={"center"}
-                colorScheme={color}
-                size="md"
-                onClick={() => {
-                  saveAs(pdfCVEN, "cvHectorD-EN.pdf");
-                }}
-              >
-                Download CV in English
-              </Button>
+              {language === "es" ? (
+                <Button
+                  textAlign={"center"}
+                  colorScheme={color}
+                  size="md"
+                  onClick={() => {
+                    saveAs(pdfCVES, "cvHectorD-ES.pdf");
+                  }}
+                >
+                  {selectedTranslations.cv}
+                </Button>
+              ) : (
+                <Button
+                  textAlign={"center"}
+                  colorScheme={color}
+                  size="md"
+                  onClick={() => {
+                    saveAs(pdfCVEN, "cvHectorD-EN.pdf");
+                  }}
+                >
+                  {selectedTranslations.cv}
+                </Button>
+              )}
             </Box>
           </Stack>
         </Stack>

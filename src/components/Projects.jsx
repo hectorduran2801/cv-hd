@@ -16,15 +16,24 @@ import {
   Center,
 } from "@chakra-ui/react";
 import { Fade } from "react-reveal";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ProjectsArray from "./ProjectsArray";
+import ProjectsArrayES from "./ProjectsArrayES";
 import TagsArray from "./TagsArray";
 
 function Projects({ color, language, onLanguageChange }) {
   const projects = ProjectsArray();
+  const projectsES = ProjectsArrayES();
   const options = TagsArray("ProjectsTags");
+  const optionsES = TagsArray("ProjectsTagsES");
 
-  const [selected, setSelected] = useState("All");
+  const [selected, setSelected] = useState("");
+
+  useEffect(() => {
+    if (options.length > 0) {
+      setSelected(language === "es" ? "Todos" : "All");
+    }
+  }, [options, language]);
 
   const handleSelected = (value) => {
     setSelected(value);
@@ -65,72 +74,137 @@ function Projects({ color, language, onLanguageChange }) {
           <Center px={4}>
             <ButtonGroup variant="outline">
               <Button
-                colorScheme={selected === "All" ? `${color}` : "gray"}
-                onClick={() => handleSelected("All")}
+                colorScheme={selected === selectedTranslations.all ? `${color}` : "gray"}
+                onClick={() => handleSelected(selectedTranslations.all)}
               >
                 {selectedTranslations.all}
               </Button>
-              {options.map((option) => (
-                <Button
-                  colorScheme={selected === option.value ? `${color}` : "gray"}
-                  onClick={() => handleSelected(option.value)}
-                >
-                  {option.value}
-                </Button>
-              ))}
+              {language === "es"
+                ? optionsES.map((option) => (
+                    <Button
+                      key={option.value}
+                      colorScheme={
+                        selected === option.value ? `${color}` : "gray"
+                      }
+                      onClick={() => handleSelected(option.value)}
+                    >
+                      {option.value}
+                    </Button>
+                  ))
+                : options.map((option) => (
+                    <Button
+                      key={option.value}
+                      colorScheme={
+                        selected === option.value ? `${color}` : "gray"
+                      }
+                      onClick={() => handleSelected(option.value)}
+                    >
+                      {option.value}
+                    </Button>
+                  ))}
             </ButtonGroup>
           </Center>
 
           <SimpleGrid columns={[1, 2, 3]} px={4} spacing={4}>
-            {projects
-              .filter((other) => {
-                if (selected === "All") {
-                  return true;
-                } else {
-                  return other.tags.includes(selected);
-                }
-              })
-              .map((other) => (
-                <Fade bottom>
-                  <Card key={other.name}>
-                    <Stack>
-                      <CardBody align="left" h={[null, "40vh"]}>
-                        <Heading size="sm" style={{ color: "#3182CE" }}>
-                          {other.name}
-                        </Heading>
+            {language === "es"
+              ? projectsES
+                  .filter((other) => {
+                    if (selected === "Todos") {
+                      return true;
+                    } else {
+                      return other.tags.includes(selected);
+                    }
+                  })
+                  .map((other) => (
+                    <Fade bottom key={other.name}>
+                      <Card>
+                        <Stack>
+                          <CardBody align="left" h={[null, "40vh"]}>
+                            <Heading size="sm" style={{ color: "#3182CE" }}>
+                              {other.name}
+                            </Heading>
 
-                        <Text fontSize="sm" py={2}>
-                          {other.description}
-                        </Text>
+                            <Text fontSize="sm" py={2}>
+                              {other.description}
+                            </Text>
 
-                        <Stack spacing={2}>
-                          {other.buttons.map((button) => (
-                            <Link
-                              key={button.text}
-                              href={button.href}
-                              color={`${color}.400`}
-                              target="_blank"
-                            >
-                              {button.text}
-                            </Link>
-                          ))}
+                            <Stack spacing={2}>
+                              {other.buttons.map((button) => (
+                                <Link
+                                  key={button.text}
+                                  href={button.href}
+                                  color={`${color}.400`}
+                                  target="_blank"
+                                >
+                                  {button.text}
+                                </Link>
+                              ))}
+                            </Stack>
+                            <HStack flexWrap="wrap" pt={4} spacing={2}>
+                              {other.badges.map((badge) => (
+                                <Badge
+                                  my={2}
+                                  key={badge.text}
+                                  colorScheme={badge.colorScheme}
+                                >
+                                  {badge.text}
+                                </Badge>
+                              ))}
+                            </HStack>
+                          </CardBody>
                         </Stack>
-                        <HStack flexWrap="wrap" pt={4} spacing={2}>
-                          {other.badges.map((badge) => (
-                            <Badge
-                              my={2}
-                              key={badge.text}
-                              colorScheme={badge.colorScheme}
-                            >
-                              {badge.text}
-                            </Badge>
-                          ))}
-                        </HStack>
-                      </CardBody>
-                    </Stack>
-                  </Card>
-                </Fade>
-              ))}
+                      </Card>
+                    </Fade>
+                  ))
+              : projects
+                  .filter((other) => {
+                    if (selected === selectedTranslations.all) {
+                      return true;
+                    } else {
+                      return other.tags.includes(selected);
+                    }
+                  })
+                  .map((other) => (
+                    <Fade bottom key={other.name}>
+                      <Card>
+                        <Stack>
+                          <CardBody align="left" h={[null, "40vh"]}>
+                            <Heading size="sm" style={{ color: "#3182CE" }}>
+                              {other.name}
+                            </Heading>
+
+                            <Text fontSize="sm" py={2}>
+                              {other.description}
+                            </Text>
+
+                            <Stack spacing={2}>
+                              {other.buttons.map((button) => (
+                                <Link
+                                  key={button.text}
+                                  href={button.href}
+                                  color={`${color}.400`}
+                                  target="_blank"
+                                >
+                                  {button.text}
+                                </Link>
+                              ))}
+                            </Stack>
+                            <HStack flexWrap="wrap" pt={4} spacing={2}>
+                              {other.badges.map((badge) => (
+                                <Badge
+                                  my={2}
+                                  key={badge.text}
+                                  colorScheme={badge.colorScheme}
+                                >
+                                  {badge.text}
+                                </Badge>
+                              ))}
+                            </HStack>
+                          </CardBody>
+                        </Stack>
+                      </Card>
+                    </Fade>
+                  ))}
           </SimpleGrid>
         </Stack>
       </Container>

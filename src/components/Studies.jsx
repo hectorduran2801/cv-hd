@@ -23,19 +23,22 @@ import { ChevronRightIcon } from "@chakra-ui/icons";
 import { Fade } from "react-reveal";
 import { useState, useEffect } from "react";
 import StudiesArray from "./StudiesArray";
+import StudiesArrayES from "./StudiesArrayES";
 import TagsArray from "./TagsArray";
 
 function Studies({ color, language, onLanguageChange }) {
   const studies = StudiesArray();
+  const studiesES = StudiesArrayES();
   const options = TagsArray("StudiesTags");
+  const optionsES = TagsArray("StudiesTagsES");
   const [selected, setSelected] = useState("");
 
   useEffect(() => {
     if (options.length > 0) {
-      setSelected(options[0].value);
+      setSelected(language === "es" ? "Licenciatura" : "Degree");
     }
-  }, [options]);
-  
+  }, [options, language]);
+
   const handleSelected = (value) => {
     setSelected(value);
   };
@@ -71,67 +74,131 @@ function Studies({ color, language, onLanguageChange }) {
           </Stack>
           <Center px={4}>
             <ButtonGroup variant="outline">
-              {options.map((option) => (
-                <Button
-                  colorScheme={selected === option.value ? `${color}` : "gray"}
-                  onClick={() => handleSelected(option.value)}
-                >
-                  {option.value}
-                </Button>
-              ))}
+              {language === "es"
+                ? optionsES.map((option) => (
+                    <Button
+                      colorScheme={
+                        selected === option.value ? `${color}` : "gray"
+                      }
+                      onClick={() => handleSelected(option.value)}
+                    >
+                      {option.value}
+                    </Button>
+                  ))
+                : options.map((option) => (
+                    <Button
+                      colorScheme={
+                        selected === option.value ? `${color}` : "gray"
+                      }
+                      onClick={() => handleSelected(option.value)}
+                    >
+                      {option.value}
+                    </Button>
+                  ))}
             </ButtonGroup>
           </Center>
           <Stack px={4} spacing={4}>
-            {studies
-              .filter((stu) => stu.tags.includes(selected))
-              .map((stu) => (
-                <Fade bottom>
-                  <Card key={stu.institution} size="sm">
-                    <CardHeader>
-                      <Flex justifyContent="space-between">
-                        <HStack>
-                          <Image src={stu.image} h={50} />
-                          <Box px={2} align="left">
-                            <Text fontWeight={600}>{stu.institution}</Text>
-                            <Text>{stu.position}</Text>
-                          </Box>
-                        </HStack>
-                        <Text px={2} fontWeight={300}>
-                          {stu.duration}
-                        </Text>
-                      </Flex>
-                    </CardHeader>
-                    <CardBody>
-                      <Flex>
-                        <List align="left" spacing={3}>
-                          {stu.listItems.map((item, index) => (
-                            <ListItem key={index}>
-                              <ListIcon
-                                boxSize={6}
-                                as={ChevronRightIcon}
-                                color={`${color}.500`}
-                              />
-                              {item}
-                            </ListItem>
-                          ))}
-                        </List>
-                      </Flex>
-                    </CardBody>
-                    <CardFooter>
-                      <HStack spacing={2}>
-                        {stu.badges.map((badge) => (
-                          <Badge
-                            key={badge.name}
-                            colorScheme={badge.colorScheme}
-                          >
-                            {badge.name}
-                          </Badge>
-                        ))}
-                      </HStack>
-                    </CardFooter>
-                  </Card>
-                </Fade>
-              ))}
+            {language === "es"
+              ? studiesES
+                  .filter((stu) => stu.tags.includes(selected))
+                  .map((stu) => (
+                    <Fade bottom>
+                      <Card key={stu.institution} size="sm">
+                        <CardHeader>
+                          <Flex justifyContent="space-between">
+                            <HStack>
+                              <Image src={stu.image} h={50} />
+                              <Box px={2} align="left">
+                                <Text fontWeight={600}>{stu.institution}</Text>
+                                <Text>{stu.position}</Text>
+                              </Box>
+                            </HStack>
+                            <Text px={2} fontWeight={300}>
+                              {stu.duration}
+                            </Text>
+                          </Flex>
+                        </CardHeader>
+                        <CardBody>
+                          <Flex>
+                            <List align="left" spacing={3}>
+                              {stu.listItems.map((item, index) => (
+                                <ListItem key={index}>
+                                  <ListIcon
+                                    boxSize={6}
+                                    as={ChevronRightIcon}
+                                    color={`${color}.500`}
+                                  />
+                                  {item}
+                                </ListItem>
+                              ))}
+                            </List>
+                          </Flex>
+                        </CardBody>
+                        <CardFooter>
+                          <HStack spacing={2}>
+                            {stu.badges.map((badge) => (
+                              <Badge
+                                key={badge.name}
+                                colorScheme={badge.colorScheme}
+                              >
+                                {badge.name}
+                              </Badge>
+                            ))}
+                          </HStack>
+                        </CardFooter>
+                      </Card>
+                    </Fade>
+                  ))
+              : studies
+                  .filter((stu) => stu.tags.includes(selected))
+                  .map((stu) => (
+                    <Fade bottom>
+                      <Card key={stu.institution} size="sm">
+                        <CardHeader>
+                          <Flex justifyContent="space-between">
+                            <HStack>
+                              <Image src={stu.image} h={50} />
+                              <Box px={2} align="left">
+                                <Text fontWeight={600}>{stu.institution}</Text>
+                                <Text>{stu.position}</Text>
+                              </Box>
+                            </HStack>
+                            <Text px={2} fontWeight={300}>
+                              {stu.duration}
+                            </Text>
+                          </Flex>
+                        </CardHeader>
+                        <CardBody>
+                          <Flex>
+                            <List align="left" spacing={3}>
+                              {stu.listItems.map((item, index) => (
+                                <ListItem key={index}>
+                                  <ListIcon
+                                    boxSize={6}
+                                    as={ChevronRightIcon}
+                                    color={`${color}.500`}
+                                  />
+                                  {item}
+                                </ListItem>
+                              ))}
+                            </List>
+                          </Flex>
+                        </CardBody>
+                        <CardFooter>
+                          <HStack spacing={2}>
+                            {stu.badges.map((badge) => (
+                              <Badge
+                                key={badge.name}
+                                colorScheme={badge.colorScheme}
+                              >
+                                {badge.name}
+                              </Badge>
+                            ))}
+                          </HStack>
+                        </CardFooter>
+                      </Card>
+                    </Fade>
+                  ))}
           </Stack>
         </Stack>
       </Container>
@@ -139,4 +206,4 @@ function Studies({ color, language, onLanguageChange }) {
   );
 }
 
-export default Studies
+export default Studies;

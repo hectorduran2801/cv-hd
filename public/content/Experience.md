@@ -5,7 +5,7 @@
 - Badges:
   - [blue]
 - List Items:
-  - Requirements assessment. (Jira Software)
+  - Requirement Assessment. (Jira Software)
   - Desktop application development. (VB.NET, SQL Server)
   - Web application development. (.NET, MVC, C#, SQL Server)
 
@@ -35,4 +35,4 @@
 - Badges:
   - [blue]
 - List Items:
-  - Optimization of the different applications in pre-production.
+  - Optimization of the different web applications in pre-production.

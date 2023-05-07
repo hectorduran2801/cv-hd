@@ -2,7 +2,7 @@
 - Hector Duran
 
 ## Header
-- Hi, my name is Hector. 
+- Hi, my name is Héctor. 
 - I'm a Developer Software.
 
 ## About

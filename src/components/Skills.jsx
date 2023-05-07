@@ -15,15 +15,24 @@ import {
   Center,
 } from "@chakra-ui/react";
 import { Fade } from "react-reveal";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import SkillsArray from "./SkillsArray";
+import SkillsArrayES from "./SkillsArrayES";
 import TagsArray from "./TagsArray";
 
 function Skills({ color, language, onLanguageChange }) {
   const skills = SkillsArray();
+  const skillsES = SkillsArrayES();
   const options = TagsArray("SkillsTags");
+  const optionsES = TagsArray("SkillsTagsES");
 
   const [selected, setSelected] = useState("Front-end");
+
+  useEffect(() => {
+    if (options.length > 0) {
+      setSelected(language === "es" ? "Front-end" : "Front-end");
+    }
+  }, [options, language]);
 
   const handleSelected = (value) => {
     setSelected(value);
@@ -61,46 +70,85 @@ function Skills({ color, language, onLanguageChange }) {
 
           <Center px={4}>
             <ButtonGroup variant="outline">
-              {options.map((option) => (
-                <Button
-                  colorScheme={selected === option.value ? `${color}` : "gray"}
-                  onClick={() => handleSelected(option.value)}
-                >
-                  {option.value}
-                </Button>
-              ))}
+              {language === "es"
+                ? optionsES.map((option) => (
+                    <Button
+                      colorScheme={
+                        selected === option.value ? `${color}` : "gray"
+                      }
+                      onClick={() => handleSelected(option.value)}
+                    >
+                      {option.value}
+                    </Button>
+                  ))
+                : options.map((option) => (
+                    <Button
+                      colorScheme={
+                        selected === option.value ? `${color}` : "gray"
+                      }
+                      onClick={() => handleSelected(option.value)}
+                    >
+                      {option.value}
+                    </Button>
+                  ))}
             </ButtonGroup>
           </Center>
           <SimpleGrid columns={[1, 2, 3]} px={4} spacing={4}>
-            {skills
-              .filter((skl) => skl.tags.includes(selected))
-              .map((skl) => (
-                <Fade bottom>
-                  <Card key={skl.name}>
-                    <Stack>
-                      <CardBody align="left" h={[null, "40vh"]}>
-                        <Heading size="sm">{skl.name}</Heading>
-
-                        <Text fontSize="sm" py={2}>
-                          {skl.description}
-                        </Text>
-
-                        <HStack flexWrap="wrap" pt={4} spacing={2}>
-                          {skl.badges.map((badge) => (
-                            <Badge
-                              my={2}
-                              key={badge.text}
-                              colorScheme={badge.colorScheme}
-                            >
-                              {badge.text}
-                            </Badge>
-                          ))}
-                        </HStack>
-                      </CardBody>
-                    </Stack>
-                  </Card>
-                </Fade>
-              ))}
+            {language === "es"
+              ? skillsES
+                  .filter((skl) => skl.tags.includes(selected))
+                  .map((skl) => (
+                    <Fade bottom key={skl.name}>
+                      <Card>
+                        <Stack>
+                          <CardBody align="left" h={[null, "40vh"]}>
+                            <Heading size="sm">{skl.name}</Heading>
+                            <Text fontSize="sm" py={2}>
+                              {skl.description}
+                            </Text>
+                            <HStack flexWrap="wrap" pt={4} spacing={2}>
+                              {skl.badges.map((badge) => (
+                                <Badge
+                                  my={2}
+                                  key={badge.text}
+                                  colorScheme={badge.colorScheme}
+                                >
+                                  {badge.text}
+                                </Badge>
+                              ))}
+                            </HStack>
+                          </CardBody>
+                        </Stack>
+                      </Card>
+                    </Fade>
+                  ))
+              : skills
+                  .filter((skl) => skl.tags.includes(selected))
+                  .map((skl) => (
+                    <Fade bottom key={skl.name}>
+                      <Card>
+                        <Stack>
+                          <CardBody align="left" h={[null, "40vh"]}>
+                            <Heading size="sm">{skl.name}</Heading>
+                            <Text fontSize="sm" py={2}>
+                              {skl.description}
+                            </Text>
+                            <HStack flexWrap="wrap" pt={4} spacing={2}>
+                              {skl.badges.map((badge) => (
+                                <Badge
+                                  my={2}
+                                  key={badge.text}
+                                  colorScheme={badge.colorScheme}
+                                >
+                                  {badge.text}
+                                </Badge>
+                              ))}
+                            </HStack>
+                          </CardBody>
+                        </Stack>
+                      </Card>
+                    </Fade>
+                  ))}
           </SimpleGrid>
         </Stack>
       </Container>

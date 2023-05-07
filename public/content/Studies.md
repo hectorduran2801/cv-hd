@@ -17,7 +17,7 @@
 - List Items:
   - To provide the national market with specialists in Information Security, capable of applying security technologies, identifying measures to defend and improve the security of organizations.
 
-<!-- ## Technological University of Panama - UTP
+<!-- ## Technological University of Panama
 - *Master's Degree in Information Security* | May'23 - Currently
 - ![logo512](../assets/logoUTP.webp)
 - Tags: Master
@@ -68,7 +68,7 @@
 - Badges:
   - []
 - List Items:
-  - Welcome to the Modern JavaScript course. The main objective of the course is to teach you modern JavaScript, starting from zero knowledge in JavaScript to take you to an advanced and competitive level in today's job market.
+  - The main objective of the course is to teach you modern JavaScript, starting from zero knowledge in JavaScript to take you to an advanced and competitive level in today's job market.
 
 ## Udemy
 - *Unity* | Jul'18 - Nov'18
@@ -77,7 +77,7 @@
 - Badges:
   - []
 - List Items:
-  - Meet the world's most advanced videogame engine.
+  - Know and apply the fundamentals of the creative process of the video game.
 
 ## Udemy
 - *ReactJS from zero to expert* | Jan'23 - Feb'23
@@ -86,4 +86,4 @@
 - Badges:
   - []
 - List Items:
-  - Learn React JS step by step.
+  - Development of dynamic and reusable user interfaces.

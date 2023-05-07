@@ -1,7 +1,10 @@
-import { Box, Heading, Container, Text, Stack} from "@chakra-ui/react";
+import { Box, Heading, Container, Text, Stack } from "@chakra-ui/react";
 import ProfileArray from "./ProfileArray";
+import ProfileArrayES from "./ProfileArrayES";
 
-function Header({ color }) {
+function Header({ color, language, onLanguageChange }) {
+  const profileES = ProfileArrayES();
+
   const profile = ProfileArray();
 
   return (
@@ -14,15 +17,15 @@ function Header({ color }) {
           pb={{ base: 20, md: 36 }}
           pt={{ base: 36, md: 52 }}
         >
-  
           <Heading
             fontWeight={600}
             fontSize={{ base: "2xl", sm: "4xl", md: "6xl" }}
             lineHeight={"110%"}
           >
-            {profile.headerName} <br />
+            {language === "es" ? profileES.headerName : profile.headerName}
+            <br />
             <Text as={"span"} color={`${color}.400`}>
-              {profile.headerRole}
+            {language === "es" ? profileES.headerRole : profile.headerRole}
             </Text>
           </Heading>
         </Stack>
