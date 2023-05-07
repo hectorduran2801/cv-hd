@@ -27,11 +27,31 @@ function App() {
         onLanguageChange={handleLanguageChange}
       />
       <Header color={color} />
-      <About color={color} />
-      <Studies color={color} />
-      <Skills color={color} />
-      <Experience color={color} />
-      <Projects color={color} />
+      <About
+        color={color}
+        language={language}
+        onLanguageChange={handleLanguageChange}
+      />
+      <Studies
+        color={color}
+        language={language}
+        onLanguageChange={handleLanguageChange}
+      />
+      <Skills
+        color={color}
+        language={language}
+        onLanguageChange={handleLanguageChange}
+      />
+      <Experience
+        color={color}
+        language={language}
+        onLanguageChange={handleLanguageChange}
+      />
+      <Projects
+        color={color}
+        language={language}
+        onLanguageChange={handleLanguageChange}
+      />
       <Contact
         color={color}
         language={language}

@@ -25,7 +25,7 @@ import { useState, useEffect } from "react";
 import ExperienceArray from "./ExperienceArray";
 import TagsArray from "./TagsArray";
 
-export default function Experience({ color }) {
+function Experience({ color, language, onLanguageChange }) {
   const experience = ExperienceArray();
   const options = TagsArray("ExperienceTags");
   const [selected, setSelected] = useState("");
@@ -35,10 +35,21 @@ export default function Experience({ color }) {
       setSelected(options[0].value);
     }
   }, [options]);
-  
+
   const handleSelected = (value) => {
     setSelected(value);
   };
+
+  const translations = {
+    en: {
+      experience: "Experience",
+    },
+    es: {
+      experience: "Experiencia",
+    },
+  };
+
+  const selectedTranslations = translations[language];
 
   return (
     <>
@@ -54,7 +65,7 @@ export default function Experience({ color }) {
               <Text color={`${color}.400`} fontWeight={800}>
                 04
               </Text>
-              <Text fontWeight={800}>Experience</Text>
+              <Text fontWeight={800}>{selectedTranslations.experience}</Text>
             </HStack>
             <Divider orientation="horizontal" />
           </Stack>
@@ -127,3 +138,5 @@ export default function Experience({ color }) {
     </>
   );
 }
+
+export default Experience;

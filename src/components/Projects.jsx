@@ -20,7 +20,7 @@ import { useState } from "react";
 import ProjectsArray from "./ProjectsArray";
 import TagsArray from "./TagsArray";
 
-function Projects({ color }) {
+function Projects({ color, language, onLanguageChange }) {
   const projects = ProjectsArray();
   const options = TagsArray("ProjectsTags");
 
@@ -29,6 +29,19 @@ function Projects({ color }) {
   const handleSelected = (value) => {
     setSelected(value);
   };
+
+  const translations = {
+    en: {
+      all: "All",
+      projects: "Projects",
+    },
+    es: {
+      all: "Todos",
+      projects: "Proyectos",
+    },
+  };
+
+  const selectedTranslations = translations[language];
 
   return (
     <>
@@ -44,7 +57,7 @@ function Projects({ color }) {
               <Text color={`${color}.400`} fontWeight={800}>
                 05
               </Text>
-              <Text fontWeight={800}>Projects</Text>
+              <Text fontWeight={800}>{selectedTranslations.projects}</Text>
             </HStack>
             <Divider orientation="horizontal" />
           </Stack>
@@ -55,7 +68,7 @@ function Projects({ color }) {
                 colorScheme={selected === "All" ? `${color}` : "gray"}
                 onClick={() => handleSelected("All")}
               >
-                All
+                {selectedTranslations.all}
               </Button>
               {options.map((option) => (
                 <Button

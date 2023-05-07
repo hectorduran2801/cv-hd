@@ -15,8 +15,20 @@ import pdfCVES from "../cv/cvHectorD-ES.pdf";
 import pdfCVEN from "../cv/cvHectorD-EN.pdf";
 import logoImage from "../../src/photo/yo.webp";
 
-function About({ color }) {
+function About({ color, language, onLanguageChange }) {
   const profile = ProfileArray();
+
+  const translations = {
+    en: {
+      about: "About",
+    },
+    es: {
+      about: "Sobre mí",
+    },
+  };
+
+  const selectedTranslations = translations[language];
+
   return (
     <>
       <Container maxW={"3xl"} id="about">
@@ -31,7 +43,7 @@ function About({ color }) {
               <Text color={`${color}.400`} fontWeight={800}>
                 01
               </Text>
-              <Text fontWeight={800}>About</Text>
+              <Text fontWeight={800}>{selectedTranslations.about}</Text>
             </HStack>
             <Divider orientation="horizontal" />
           </Stack>
@@ -40,7 +52,12 @@ function About({ color }) {
             align="center"
             flexDir={{ base: "column", md: "row" }}
           >
-            <Image src={logoImage} boxSize={200} borderRadius="full" border="1px solid black" />
+            <Image
+              src={logoImage}
+              boxSize={200}
+              borderRadius="full"
+              border="1px solid black"
+            />
             <Box borderRadius={{ base: "xl 0 0 xl", md: "xl" }} p={4}>
               <Text color={"white.600"} fontSize={"xl"} px={4}>
                 {profile.about}

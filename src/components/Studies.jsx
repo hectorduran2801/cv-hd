@@ -25,7 +25,7 @@ import { useState, useEffect } from "react";
 import StudiesArray from "./StudiesArray";
 import TagsArray from "./TagsArray";
 
-export default function Experience({ color }) {
+function Studies({ color, language, onLanguageChange }) {
   const studies = StudiesArray();
   const options = TagsArray("StudiesTags");
   const [selected, setSelected] = useState("");
@@ -39,6 +39,17 @@ export default function Experience({ color }) {
   const handleSelected = (value) => {
     setSelected(value);
   };
+
+  const translations = {
+    en: {
+      studies: "Studies",
+    },
+    es: {
+      studies: "Estudios",
+    },
+  };
+
+  const selectedTranslations = translations[language];
 
   return (
     <>
@@ -54,7 +65,7 @@ export default function Experience({ color }) {
               <Text color={`${color}.400`} fontWeight={800}>
                 02
               </Text>
-              <Text fontWeight={800}>Studies</Text>
+              <Text fontWeight={800}>{selectedTranslations.studies}</Text>
             </HStack>
             <Divider orientation="horizontal" />
           </Stack>
@@ -127,3 +138,5 @@ export default function Experience({ color }) {
     </>
   );
 }
+
+export default Studies
