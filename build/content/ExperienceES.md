@@ -29,7 +29,7 @@
   - Desarrollo de aplicaciones.
 
 ## CrimsonLogic Latin America
-- *Desarrollador Back-end* | Mar'22 - May'23
+- *Desarrollador Back-end* | May'22 - May'23
 - ![logo512](../assets/logo.webp)
 - Tags: Back-end
 - Badges:
